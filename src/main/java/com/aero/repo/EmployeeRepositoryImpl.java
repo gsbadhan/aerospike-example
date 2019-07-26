@@ -9,8 +9,10 @@ import com.aerospike.client.Record;
 import com.aerospike.client.policy.WritePolicy;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
-    private String namsespace;
-    private String set;
+    private String     namsespace;
+    private String     set;
+    // ttl in seconds
+    private static int EXPIRATION_SECONDS = (60 * 1000);
 
     public EmployeeRepositoryImpl(String namsespace, String set) {
         this.namsespace = namsespace;
@@ -21,8 +23,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     public boolean save(Employee emp) {
         WritePolicy wPolicy = new WritePolicy(CaheClient.client.getWritePolicyDefault());
         wPolicy.sendKey = true;
-        // ttl in seconds
-        wPolicy.expiration = 10;
+        wPolicy.expiration = EXPIRATION_SECONDS;
         CaheClient.client.put(wPolicy, new Key(namsespace, set, emp.getId()), new Bin("data", emp));
         System.out.println("saved..");
         return true;

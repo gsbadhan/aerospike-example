@@ -17,7 +17,7 @@ public class CaheClient {
     private CaheClient() {
     }
 
-    protected static final int    DEFAULT_TIMEOUT_MS = 1000;
+    protected static final int    DEFAULT_TIMEOUT_MS = 3000;
     public static AerospikeClient client             = null;
 
     public static void load(Properties params) {
