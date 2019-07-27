@@ -53,5 +53,12 @@ public class EmployeeRepositoryImplTest {
         Optional<List<Employee>> employees = repository.getEmployee(ids);
         employees.get().forEach(em -> System.out.println(em));
     }
+    
+    @Test
+    public void existTest() {
+        long id = 1001;
+        boolean status = repository.exist(id);
+        System.out.println("existTest:" + status);
+    }
 
 }

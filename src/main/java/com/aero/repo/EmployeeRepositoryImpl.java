@@ -71,4 +71,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         return CaheClient.client.delete(CaheClient.client.getWritePolicyDefault(), key);
     }
 
+    @Override
+    public boolean exist(long id) {
+        Key key = new Key(namsespace, set, id);
+        return CaheClient.client.exists(CaheClient.client.getReadPolicyDefault(), key);
+    }
+
 }

@@ -11,4 +11,6 @@ public interface EmployeeRepository {
     Optional<List<Employee>> getEmployee(List<Long> ids);
 
     boolean delete(long id);
+
+    boolean exist(long id);
 }
