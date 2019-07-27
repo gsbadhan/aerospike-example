@@ -17,8 +17,9 @@ public class CaheClient {
     private CaheClient() {
     }
 
-    protected static final int    DEFAULT_TIMEOUT_MS = 3000;
-    public static AerospikeClient client             = null;
+    protected static final int    DEFAULT_TIMEOUT_MS   = 3000;
+    protected static final int    PER_NODE_CONNECTIONS = 5000;
+    public static AerospikeClient client               = null;
 
     public static void load(Properties params) {
         ClientPolicy policy = new ClientPolicy();
@@ -32,6 +33,7 @@ public class CaheClient {
         policy.batchPolicyDefault = new BatchPolicy();
         policy.infoPolicyDefault = new InfoPolicy();
         policy.timeout = DEFAULT_TIMEOUT_MS;
+        policy.maxConnsPerNode = PER_NODE_CONNECTIONS;
         Host[] hosts = Host.parseHosts(params.getProperty("host"), Integer.parseInt(params.getProperty("port")));
         client = new AerospikeClient(policy, hosts);
         client.getNodeNames().forEach(s -> System.out.println("node name:" + s));
