@@ -9,7 +9,7 @@
 	<description />
 
 	<properties>
-		<junit>4.12</junit>
+		<junit>4.13.1</junit>
 		<guava.version>21.0</guava.version>
 		<sl4j.version>1.7.25</sl4j.version>
 		<gson>2.8.2</gson>
