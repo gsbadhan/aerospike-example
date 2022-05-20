@@ -12,7 +12,7 @@
 		<junit>4.12</junit>
 		<guava.version>21.0</guava.version>
 		<sl4j.version>1.7.25</sl4j.version>
-		<gson>2.8.2</gson>
+		<gson>2.8.9</gson>
 		<jdk>1.8</jdk>
 		<aero>4.4.3</aero>
 	</properties>
